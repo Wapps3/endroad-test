@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offset = new Vector3(0, Mathf.Sin(cameraPitch), Mathf.Cos(cameraPitch)) * cameraDistance;
+        offset = new Vector3(0, Mathf.Sin(cameraPitch*Mathf.Deg2Rad), Mathf.Cos(cameraPitch* Mathf.Deg2Rad)) * cameraDistance;
     }
 
     // Update is called once per frame
