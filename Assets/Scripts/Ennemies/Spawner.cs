@@ -5,7 +5,12 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public float frequency;
-    public float timeDivergente;
+    public float timeInterval;
+
+    public float distanceFromPlayer;
+    public float distanceInterval;
+
+    public float angleSpawn;
 
     private float lastTimeSpawn = 1;
     private float nextTimeSpawn = 0;
@@ -28,7 +33,7 @@ public class Spawner : MonoBehaviour
             SpawnEnnemy();
 
             lastTimeSpawn = 0;
-            nextTimeSpawn = frequency + Random.Range(-timeDivergente, timeDivergente);
+            nextTimeSpawn = frequency + Random.Range(-timeInterval, timeInterval);
         }
     }
 
@@ -48,7 +53,24 @@ public class Spawner : MonoBehaviour
         {
             if ( passFrequency + (ennemy.GetComponent<EnnemyStatManager>().GetSpawnFrequency() / totalFrequency) >= random)
             {
-                Instantiate(ennemy, new Vector3(Random.Range(-200f,200f), 0, 500), Quaternion.identity);
+                Transform playerTransform = FindObjectOfType<AirCraftControls>().transform;
+
+                float dist = distanceFromPlayer + Random.Range(-distanceInterval, distanceInterval);
+
+                GameObject tmpGameObject = new GameObject();
+                tmpGameObject.transform.position = playerTransform.position;
+                tmpGameObject.transform.rotation = playerTransform.rotation;
+                Vector3 eulerAgnles = tmpGameObject.transform.rotation.eulerAngles;
+                tmpGameObject.transform.rotation = Quaternion.Euler(eulerAgnles.x, eulerAgnles.y + Random.Range(-angleSpawn, angleSpawn), eulerAgnles.z);
+
+                Vector3 randomDirection = tmpGameObject.transform.forward;
+
+                Vector3 positionToSpawn = playerTransform.position + (randomDirection * dist) ;
+
+                Destroy(tmpGameObject);
+
+                Instantiate(ennemy, positionToSpawn, Quaternion.identity);
+
                 return;
             }
             else
