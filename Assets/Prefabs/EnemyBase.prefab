@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 8558496872925611620}
   - component: {fileID: 54869892764661280}
   - component: {fileID: 8578618524106567832}
+  - component: {fileID: 3514258687996124199}
+  - component: {fileID: -8148512709730874590}
   m_Layer: 9
-  m_Name: NME
+  m_Name: EnemyBase
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +49,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!135 &8578618524106567832
 SphereCollider:
@@ -62,6 +64,36 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 7.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3514258687996124199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558496872925611626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb84a8064679a94d9c8a0d39995d66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLife: 20
+  life: 20
+  spawnFrequency: 1
+--- !u!114 &-8148512709730874590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558496872925611626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a0268131c1f9b4e9bb329a3479722b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 100
+  damage: 5
+  playerLayer: 10
 --- !u!1 &8558496873288612774
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +121,7 @@ Transform:
   m_GameObject: {fileID: 8558496873288612774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 8558496872925611620}
   m_RootOrder: 0
@@ -116,10 +148,11 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 735665606fda0c14cb12bc536aa26dc7, type: 2}
+  - {fileID: 2100000, guid: 9cbc799428fa9d043bbd734e5aa32ec4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,6 +160,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
