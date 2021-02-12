@@ -21,7 +21,6 @@ public class StatManager : MonoBehaviour
 
     public bool Damage(float damage)
     {
-
         life -= damage;
 
         if(life <= 0)
