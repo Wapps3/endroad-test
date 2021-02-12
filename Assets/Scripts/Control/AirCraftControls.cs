@@ -35,7 +35,7 @@ public class AirCraftControls : MonoBehaviour
 
         gameObject.transform.position += gameObject.transform.forward * speed * Time.deltaTime;
 
-        if(Input.GetButton("Horizontal"))
+        if (Input.GetButton("Horizontal"))
         {
             if (currentTimeRotating + Time.deltaTime > timeToRotate)
                 currentTimeRotating = timeToRotate;
@@ -82,7 +82,7 @@ public class AirCraftControls : MonoBehaviour
         Vector3 eulerAngles = gameObject.transform.rotation.eulerAngles;
 
         float angleZ = eulerAngles.z + (degree * CalculateAccelerationRatio() * acceleration * Time.deltaTime );
-        /*
+        
         if (Mathf.Sign(degree) > 0)
         {
             if (angleZ > maxAngleRotation)
@@ -94,7 +94,7 @@ public class AirCraftControls : MonoBehaviour
 
             if(angleZ < 360 - maxAngleRotation)
                 angleZ = 360 - maxAngleRotation;
-        }*/
+        }
         
        
 
