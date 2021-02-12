@@ -157,3 +157,4 @@ MonoBehaviour:
   speed: 500
   lifeTime: 10
   damage: 5
+  playerLayer: 10
