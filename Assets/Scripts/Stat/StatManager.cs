@@ -5,12 +5,12 @@ using UnityEngine;
 public class StatManager : MonoBehaviour
 {
     public float maxLife;
-    private float currentLife;
+    public float life;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentLife = maxLife;
+
     }
 
     // Update is called once per frame
@@ -21,9 +21,10 @@ public class StatManager : MonoBehaviour
 
     public bool Damage(float damage)
     {
-        currentLife -= damage;
 
-        if(currentLife <= 0)
+        life -= damage;
+
+        if(life <= 0)
         {
             Destroy(gameObject);
             return true;
