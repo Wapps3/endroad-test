@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour
 
     public float damage;
 
+    public int playerLayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,11 +30,14 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<StatManager>())
+        if (collision.gameObject.layer != playerLayer)
         {
-            collision.gameObject.GetComponent<StatManager>().Damage(damage);
-        }
+            if (collision.gameObject.GetComponent<StatManager>())
+            {
+                collision.gameObject.GetComponent<StatManager>().Damage(damage);
+            }
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }
