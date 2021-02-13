@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
 
     public Transform objectToFollow;
 
+    [Range(0f,2*Mathf.PI)]
     public float cameraPitch;
     public float cameraDistance;
 
@@ -17,12 +18,30 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offset = new Vector3(0, Mathf.Sin(cameraPitch*Mathf.Deg2Rad), Mathf.Cos(cameraPitch* Mathf.Deg2Rad)) * cameraDistance;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, objectToFollow.position - offset, Time.deltaTime * lerpSpeed);
+        float distY = Mathf.Sin(cameraPitch) * cameraDistance;
+        float distZ = Mathf.Cos(cameraPitch) * cameraDistance;
+
+        offset.x = (distZ * -objectToFollow.forward).x;
+        offset.y = distY;
+        offset.z = (distZ * -objectToFollow.forward).z;
+
+
+
+        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, objectToFollow.position + offset, Time.deltaTime * lerpSpeed);
+
+
+        float rotationAngleX = gameObject.transform.rotation.eulerAngles.x;
+
+        float rotationAngleY = objectToFollow.rotation.eulerAngles.y; // objectToFollow.rotation.eulerAngles.y;
+
+        float rotationAngleZ = gameObject.transform.rotation.eulerAngles.z;
+
+        gameObject.transform.rotation = Quaternion.Euler(rotationAngleX, rotationAngleY, rotationAngleZ);
     }
 }
