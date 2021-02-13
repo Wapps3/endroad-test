@@ -7,6 +7,8 @@ public class AirCraftControls : MonoBehaviour
     public float speed;
     public float acceleration;
 
+    private float speedBonus = 1f;
+
     public float rotationSpeed;
 
     public float tiltForceAngle;
@@ -33,7 +35,7 @@ public class AirCraftControls : MonoBehaviour
         lastSignHorizontalInput = currentSignHorizontalInput;
         currentSignHorizontalInput = Mathf.Sign(Input.GetAxis("Horizontal"));
 
-        gameObject.transform.position += gameObject.transform.forward * speed * Time.deltaTime;
+        gameObject.transform.position += gameObject.transform.forward * (speed* speedBonus) * Time.deltaTime;
 
         if (Input.GetButton("Horizontal"))
         {
@@ -90,8 +92,6 @@ public class AirCraftControls : MonoBehaviour
         }
         else
         {
-            Debug.Log(angleZ);
-
             if(angleZ < 360 - maxAngleRotation)
                 angleZ = 360 - maxAngleRotation;
         }
@@ -117,5 +117,19 @@ public class AirCraftControls : MonoBehaviour
             angleZ = eulerAngles.z - (angleResetTilt * Time.deltaTime);
 
         gameObject.transform.rotation = Quaternion.Euler(new Vector3(eulerAngles.x, eulerAngles.y, angleZ));
+    }
+
+    public void TemporaryUpgradeSpeed(float speed, float time)
+    {
+        speedBonus += speed;
+
+        StartCoroutine(RemoveAddSpeed(speed, time));
+    }
+
+    IEnumerator RemoveAddSpeed(float speed, float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        speedBonus -= speed;
     }
 }
