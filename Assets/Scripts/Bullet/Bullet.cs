@@ -8,14 +8,9 @@ public class Bullet : MonoBehaviour
     public float lifeTime;
 
     public float damage;
+    private float bonusDamage = 0;
 
     public int playerLayer;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -34,10 +29,16 @@ public class Bullet : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<StatManager>())
             {
-                collision.gameObject.GetComponent<StatManager>().Damage(damage);
+                collision.gameObject.GetComponent<StatManager>().Damage(damage * bonusDamage);
             }
 
             Destroy(gameObject);
         }
+    }
+
+    public void AddBonusDamage(float weaponDamage, float bonusDamage)
+    {
+        damage += weaponDamage;
+        this.bonusDamage += bonusDamage;
     }
 }
