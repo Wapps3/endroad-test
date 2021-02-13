@@ -46,6 +46,10 @@ public class Spawner : MonoBehaviour
             totalFrequency += ennemy.GetComponent<EnnemyStatManager>().GetSpawnFrequency();
         }
 
+        //In the case there is only rare ennemy prevent them to spawn with 100%
+        if (totalFrequency < 1f)
+            totalFrequency = 1f;
+
         float random = Random.Range(0.0f, 1.0f);
         float passFrequency = 0.0f;
 
