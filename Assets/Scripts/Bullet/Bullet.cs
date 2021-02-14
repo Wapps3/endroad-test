@@ -41,4 +41,9 @@ public class Bullet : MonoBehaviour
         damage += weaponDamage;
         this.bonusDamage += bonusDamage;
     }
+
+    public void AddSpeed(float speedBonus)
+    {
+        speed += speedBonus;
+    }
 }
