@@ -17,6 +17,7 @@ public class ShootController : MonoBehaviour
     public float damageSecondWeapon;
 
     private float bonusDamage = 1;
+    private float bonusSpeedBullet = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -35,9 +36,11 @@ public class ShootController : MonoBehaviour
             {
                 GameObject bullet = Instantiate(bulletPrefab, fisrtWeapon.gameObject.transform.position, fisrtWeapon.gameObject.transform.rotation);
                 bullet.GetComponent<Bullet>().AddBonusDamage(damageFirstWeapon, bonusDamage);
+                bullet.GetComponent<Bullet>().AddSpeed(bonusSpeedBullet);
 
                 bullet = Instantiate(bulletPrefab, secondWeapon.gameObject.transform.position, secondWeapon.gameObject.transform.rotation);
                 bullet.GetComponent<Bullet>().AddBonusDamage(damageSecondWeapon, bonusDamage);
+                bullet.GetComponent<Bullet>().AddSpeed(bonusSpeedBullet);
 
                 lastFireTime = 0;
             }
@@ -72,4 +75,19 @@ public class ShootController : MonoBehaviour
         bonusFireRate += fireRate;
     }
 
+    public void UpgradeDamage(float damageBonus)
+    {
+        damageFirstWeapon += damageBonus;
+        damageSecondWeapon += damageBonus;
+    }
+
+    public void UpgradeFireRate(float fireRateBonus)
+    {
+        maxFireRate -= fireRateBonus;
+    }
+
+    public void UpgradeBulletSpeed(float speedBonus)
+    {
+        bonusSpeedBullet += speedBonus;
+    }
 }
