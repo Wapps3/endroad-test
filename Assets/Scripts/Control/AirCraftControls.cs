@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,14 +20,6 @@ public class AirCraftControls : MonoBehaviour
 
     private float currentSignHorizontalInput = 0;
     private float lastSignHorizontalInput = 0;
-
-    //public float acceleration;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()

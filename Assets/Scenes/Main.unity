@@ -311,7 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpSpeed: 10
   objectToFollow: {fileID: 7089104574117259410}
-  cameraPitch: 6.28
+  cameraPitch: 0.7
   cameraDistance: 50
 --- !u!1001 &1398392714
 PrefabInstance:
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629199704}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 786d915bcb051fd4ab1b0d764a006976, type: 3}
   m_Name: 
@@ -501,10 +501,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6148988314162339794, guid: 6f2dfa55f8844af40b912c7ddbe7a436,
+        type: 3}
+      propertyPath: maxFireRate
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6148988314162339805, guid: 6f2dfa55f8844af40b912c7ddbe7a436,
         type: 3}
       propertyPath: speed
-      value: 0
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f2dfa55f8844af40b912c7ddbe7a436, type: 3}

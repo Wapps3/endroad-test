@@ -14,13 +14,6 @@ public class CameraController : MonoBehaviour
 
     private Vector3 offset;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -30,8 +23,6 @@ public class CameraController : MonoBehaviour
         offset.x = (distZ * -objectToFollow.forward).x;
         offset.y = distY;
         offset.z = (distZ * -objectToFollow.forward).z;
-
-
 
         gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, objectToFollow.position + offset, Time.deltaTime * lerpSpeed);
 

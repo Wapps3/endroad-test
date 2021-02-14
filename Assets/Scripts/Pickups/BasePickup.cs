@@ -35,8 +35,6 @@ public class BasePickup : MonoBehaviour
         {
             alreadyPickUp = true;
 
-            Debug.Log("Collision: " + collision.gameObject.name);
-
             Bonus(collision.gameObject);
             Destroy(gameObject);
         }
